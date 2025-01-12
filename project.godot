@@ -14,6 +14,10 @@ config/name="evolution-vampire-survivor"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Game="*res://globals/game.gd"
+
 [display]
 
 window/size/viewport_width=480
