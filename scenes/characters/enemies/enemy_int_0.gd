@@ -1,5 +1,5 @@
 class_name EnemyInt0
-extends CharacterBody2D
+extends Enemy
 
 @onready var sprite = $Sprite2D
 @onready var animation_player = $AnimationPlayer

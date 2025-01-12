@@ -16,7 +16,7 @@ func _physics_process(_delta):
 	var distance_to_player = enemy.global_position.distance_to(player.global_position)
 	if distance_to_player <= 5:
 		return
-	enemy.velocity = enemy.global_position.direction_to(player.position) * 35
+	enemy.velocity = enemy.global_position.direction_to(player.position) * 50
 	enemy.move_and_slide()
 	if enemy.velocity.x > 0:
 		enemy.sprite.flip_h = true

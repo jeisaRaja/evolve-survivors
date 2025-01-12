@@ -26,6 +26,11 @@ window/size/window_width_override=800
 window/size/window_height_override=600
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+player=""
+enemy=""
+
 [input]
 
 left={
