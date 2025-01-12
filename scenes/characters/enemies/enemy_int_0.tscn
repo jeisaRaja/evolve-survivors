@@ -1,8 +1,32 @@
-[gd_scene load_steps=8 format=3 uid="uid://dekaj5nirhm57"]
+[gd_scene load_steps=16 format=3 uid="uid://dekaj5nirhm57"]
 
 [ext_resource type="Script" path="res://scenes/characters/enemies/enemy_int_0.gd" id="1_7wqpa"]
 [ext_resource type="Texture2D" uid="uid://cqjd10wklfph8" path="res://arts/monster_int_1.png" id="1_q0x3k"]
 [ext_resource type="Script" path="res://components/enemy_ai.gd" id="2_bwksv"]
+[ext_resource type="Texture2D" uid="uid://ch0ryw8er55a" path="res://arts/shadow.png" id="2_dts5p"]
+[ext_resource type="Shader" uid="uid://ccrv7lnke8bax" path="res://common/hit_flash.tres" id="3_43ui4"]
+[ext_resource type="Script" path="res://components/hurtbox.gd" id="4_21ooj"]
+[ext_resource type="Script" path="res://components/enemy_stats.gd" id="5_7x540"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4mnom"]
+shader = ExtResource("3_43ui4")
+shader_parameter/enabled = false
+shader_parameter/Tint = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_thyw0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_r18uy"]
 resource_name = "walk"
@@ -18,23 +42,8 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_thyw0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jim6a"]
@@ -47,12 +56,56 @@ _data = {
 radius = 9.0
 height = 26.0
 
+[sub_resource type="Animation" id="Animation_qipxh"]
+resource_name = "hurt_flash"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_mjjws"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gr55s"]
+_data = {
+"RESET": SubResource("Animation_mjjws"),
+"hurt_flash": SubResource("Animation_qipxh")
+}
+
 [node name="EnemyInt0" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_7wqpa")
 
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(6, -1)
+scale = Vector2(1.12, 1.12)
+texture = ExtResource("2_dts5p")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_4mnom")
 texture = ExtResource("1_q0x3k")
 hframes = 4
 
@@ -62,8 +115,27 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_k2a3m")
 
 [node name="EnemyAI" type="Node" parent="."]
 script = ExtResource("2_bwksv")
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("stats")]
+script = ExtResource("4_21ooj")
+stats = NodePath("../EnemyStats")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtBox"]
+polygon = PackedVector2Array(-10, -8, -11, -7.5, -15, -3, -15, 1, -14, 2.6, -12, 3, -9, 2, -7, 2, -6, 3.4, -4, 5, -1, 10, 5, 10, 10, 10, 12.5, 8, 13, 7, 13, 5, 14, 4, 15, 1.4, 15, -1, 13, -1, 10, 1, 3, 0, 2, -3, -2, -7.5, -3, -8)
+
+[node name="EnemyStats" type="Node" parent="."]
+script = ExtResource("5_7x540")
+damage = 10
+health = 40
+
+[node name="HurtFlash" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_gr55s")
+}

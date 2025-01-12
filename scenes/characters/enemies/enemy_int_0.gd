@@ -1,3 +1,4 @@
+class_name EnemyInt0
 extends CharacterBody2D
 
 @onready var sprite = $Sprite2D
