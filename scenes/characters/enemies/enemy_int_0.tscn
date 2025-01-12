@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dekaj5nirhm57"]
+[gd_scene load_steps=17 format=3 uid="uid://dekaj5nirhm57"]
 
 [ext_resource type="Script" path="res://scenes/characters/enemies/enemy_int_0.gd" id="1_7wqpa"]
 [ext_resource type="Texture2D" uid="uid://cqjd10wklfph8" path="res://arts/monster_int_1.png" id="1_q0x3k"]
+[ext_resource type="Resource" uid="uid://b1a50wtrdq6op" path="res://scenes/objects/int_gem.tres" id="2_4lulp"]
 [ext_resource type="Script" path="res://components/enemy_ai.gd" id="2_bwksv"]
 [ext_resource type="Shader" uid="uid://ccrv7lnke8bax" path="res://common/hit_flash.tres" id="3_43ui4"]
 [ext_resource type="Script" path="res://components/hurtbox.gd" id="4_21ooj"]
@@ -102,6 +103,7 @@ _data = {
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_7wqpa")
+gem_res = ExtResource("2_4lulp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_4mnom")

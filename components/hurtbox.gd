@@ -20,4 +20,11 @@ func _on_area_entered(area: Area2D):
 func _on_died():
 	if hurt_flash_animation.is_playing():
 		await hurt_flash_animation.animation_finished
+	if character is Enemy:
+		print("character is enemy")
+		var gem = load(Game.gem_scene).instantiate()
+		gem.gem_res = character.gem_res
+		gem.global_position = character.global_position
+		print("adding to tree")
+		get_tree().root.add_child(gem)
 	character.queue_free()

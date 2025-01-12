@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GemResource" load_steps=3 format=3 uid="uid://cle22jybuptue"]
+
+[ext_resource type="Script" path="res://resources/gem_resource.gd" id="1_cqvri"]
+[ext_resource type="Texture2D" uid="uid://bngmoeu5vuxea" path="res://arts/str_gem.png" id="2_ia04b"]
+
+[resource]
+script = ExtResource("1_cqvri")
+texture = ExtResource("2_ia04b")
+Type = 0
