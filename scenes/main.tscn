@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://d3onqu3ckpgjf"]
+[gd_scene load_steps=9 format=4 uid="uid://d3onqu3ckpgjf"]
 
 [ext_resource type="Texture2D" uid="uid://bgggbqojkamhe" path="res://arts/tilemap.png" id="1_rwp2c"]
 [ext_resource type="PackedScene" uid="uid://bt0fmdf4wcve4" path="res://scenes/characters/player/player.tscn" id="2_lwivh"]
 [ext_resource type="Texture2D" uid="uid://didtxp11f5ltj" path="res://arts/player_int_1.png" id="3_84e1w"]
 [ext_resource type="PackedScene" uid="uid://dekaj5nirhm57" path="res://scenes/characters/enemies/enemy_int_0.tscn" id="4_5iy2p"]
 [ext_resource type="PackedScene" uid="uid://c201td5is32y7" path="res://scenes/enemy_spawner.tscn" id="5_qable"]
+[ext_resource type="PackedScene" uid="uid://bhadwbwbrxc8l" path="res://scenes/characters/enemies/enemy_str_0.tscn" id="6_23ofu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5v1a8"]
 texture = ExtResource("1_rwp2c")
@@ -62,3 +63,5 @@ texture = ExtResource("3_84e1w")
 hframes = 4
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_qable")]
+
+[node name="EnemyStr0" parent="." instance=ExtResource("6_23ofu")]

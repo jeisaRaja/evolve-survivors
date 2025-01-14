@@ -1,16 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://dekaj5nirhm57"]
+[gd_scene load_steps=17 format=3 uid="uid://bhadwbwbrxc8l"]
 
-[ext_resource type="Script" path="res://scenes/characters/enemies/enemy_int_0.gd" id="1_7wqpa"]
-[ext_resource type="Texture2D" uid="uid://cqjd10wklfph8" path="res://arts/monster_int_1.png" id="1_q0x3k"]
-[ext_resource type="Resource" uid="uid://b1a50wtrdq6op" path="res://scenes/objects/int_gem.tres" id="2_4lulp"]
-[ext_resource type="Script" path="res://components/enemy_ai.gd" id="2_bwksv"]
-[ext_resource type="Shader" uid="uid://ccrv7lnke8bax" path="res://common/hit_flash.tres" id="3_43ui4"]
-[ext_resource type="Script" path="res://components/hurtbox.gd" id="4_21ooj"]
-[ext_resource type="Script" path="res://components/enemy_stats.gd" id="5_7x540"]
+[ext_resource type="Script" path="res://scenes/characters/enemies/enemy_int_0.gd" id="1_rmgd6"]
+[ext_resource type="Resource" uid="uid://cle22jybuptue" path="res://scenes/objects/str_gem.tres" id="2_kl56r"]
+[ext_resource type="Shader" uid="uid://ccrv7lnke8bax" path="res://common/hit_flash.tres" id="3_hdsmd"]
+[ext_resource type="Texture2D" uid="uid://cqjd10wklfph8" path="res://arts/monster_int_1.png" id="4_2eak4"]
+[ext_resource type="Script" path="res://components/enemy_ai.gd" id="5_0v8h8"]
+[ext_resource type="Script" path="res://components/hurtbox.gd" id="6_dc0mu"]
+[ext_resource type="Script" path="res://components/enemy_stats.gd" id="7_d2d62"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4mnom"]
 resource_local_to_scene = true
-shader = ExtResource("3_43ui4")
+shader = ExtResource("3_hdsmd")
 shader_parameter/enabled = false
 shader_parameter/Tint = Color(1, 1, 1, 1)
 
@@ -99,16 +99,16 @@ _data = {
 "hurt_flash": SubResource("Animation_qipxh")
 }
 
-[node name="EnemyInt0" type="CharacterBody2D" groups=["enemy"]]
+[node name="EnemyStr0" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_7wqpa")
-gem_res = ExtResource("2_4lulp")
+script = ExtResource("1_rmgd6")
+gem_res = ExtResource("2_kl56r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(0.599604, 0.599604, 0.599604, 1)
+self_modulate = Color(1, 0.273989, 0.213271, 1)
 material = SubResource("ShaderMaterial_4mnom")
-texture = ExtResource("1_q0x3k")
+texture = ExtResource("4_2eak4")
 hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -122,10 +122,11 @@ rotation = -1.5708
 shape = SubResource("CapsuleShape2D_k2a3m")
 
 [node name="EnemyAI" type="Node" parent="."]
-script = ExtResource("2_bwksv")
+script = ExtResource("5_0v8h8")
 
 [node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("stats")]
-script = ExtResource("4_21ooj")
+visible = false
+script = ExtResource("6_dc0mu")
 stats = NodePath("../EnemyStats")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
@@ -134,7 +135,7 @@ rotation = 1.57079
 shape = SubResource("CapsuleShape2D_dqoar")
 
 [node name="EnemyStats" type="Node" parent="."]
-script = ExtResource("5_7x540")
+script = ExtResource("7_d2d62")
 damage = 10
 health = 40
 
