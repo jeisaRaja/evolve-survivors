@@ -1,18 +1,24 @@
 extends Node
 class_name Stats
 
-@export var character_name: String
-@export var health: int
-@onready var character = $".."
-
 signal died
+
+@export var character_name: String
+@export var health: float:
+	set = _set_health
+
+@onready var character = $".."
 
 
 func _ready():
 	pass
 
 
-func take_damage(damage: int):
-	health = clampi(health - damage, 0, health)
+func _set_health(value: float) -> void:
+	health = value
+
+
+func take_damage(damage: float):
+	health = clamp(health - damage, 0, health)
 	if health == 0:
 		died.emit()

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcww5h7kle83w"]
+
+[ext_resource type="Script" path="res://scenes/characters/enemies/damage_player.gd" id="1_leuri"]
+
+[node name="DamagePlayer" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_leuri")

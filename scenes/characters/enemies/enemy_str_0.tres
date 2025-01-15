@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpawnInfo" load_steps=3 format=3 uid="uid://blduoudbeuo3g"]
+
+[ext_resource type="PackedScene" uid="uid://bhadwbwbrxc8l" path="res://scenes/characters/enemies/enemy_str_0.tscn" id="1_loibc"]
+[ext_resource type="Script" path="res://resources/spawn_info.gd" id="1_sjjga"]
+
+[resource]
+script = ExtResource("1_sjjga")
+time_start = 0
+time_end = 2000
+enemy = ExtResource("1_loibc")
+enemy_num = 5
+enemy_spawn_delay = 10

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dekaj5nirhm57"]
+[gd_scene load_steps=19 format=3 uid="uid://dekaj5nirhm57"]
 
 [ext_resource type="Script" path="res://scenes/characters/enemies/enemy_int_0.gd" id="1_7wqpa"]
 [ext_resource type="Texture2D" uid="uid://cqjd10wklfph8" path="res://arts/monster_int_1.png" id="1_q0x3k"]
@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://ccrv7lnke8bax" path="res://common/hit_flash.tres" id="3_43ui4"]
 [ext_resource type="Script" path="res://components/hurtbox.gd" id="4_21ooj"]
 [ext_resource type="Script" path="res://components/enemy_stats.gd" id="5_7x540"]
+[ext_resource type="PackedScene" uid="uid://dcww5h7kle83w" path="res://scenes/characters/enemies/damage_player.tscn" id="8_l036i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4mnom"]
 resource_local_to_scene = true
@@ -99,7 +100,11 @@ _data = {
 "hurt_flash": SubResource("Animation_qipxh")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ijbr"]
+radius = 7.0
+
 [node name="EnemyInt0" type="CharacterBody2D" groups=["enemy"]]
+z_index = 2
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_7wqpa")
@@ -136,10 +141,17 @@ shape = SubResource("CapsuleShape2D_dqoar")
 [node name="EnemyStats" type="Node" parent="."]
 script = ExtResource("5_7x540")
 damage = 10
-health = 40
+health = 40.0
 
 [node name="HurtFlash" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_gr55s")
 }
+
+[node name="DamagePlayer" parent="." instance=ExtResource("8_l036i")]
+damage = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamagePlayer"]
+position = Vector2(-7, -1)
+shape = SubResource("CircleShape2D_5ijbr")

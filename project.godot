@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Game="*res://globals/game.gd"
+Event="*res://globals/events.gd"
 
 [display]
 
@@ -30,6 +31,10 @@ window/stretch/mode="canvas_items"
 
 player=""
 enemy=""
+
+[gui]
+
+theme/custom_font="res://arts/pixel_rpg.ttf"
 
 [input]
 
@@ -56,8 +61,11 @@ down={
 
 [layer_names]
 
+2d_physics/layer_1="player"
 2d_physics/layer_2="enemy"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

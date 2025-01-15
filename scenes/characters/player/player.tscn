@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://bt0fmdf4wcve4"]
+[gd_scene load_steps=15 format=3 uid="uid://bt0fmdf4wcve4"]
 
 [ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_e4ujy"]
 [ext_resource type="Texture2D" uid="uid://77a1sd6jj7yj" path="res://arts/player_starting.png" id="1_pca40"]
 [ext_resource type="Script" path="res://components/movement.gd" id="2_jdd5h"]
 [ext_resource type="Script" path="res://components/player_input.gd" id="3_c2127"]
 [ext_resource type="PackedScene" uid="uid://wxaf36pg76le" path="res://scenes/characters/player/abilities/starting_skill.tscn" id="5_c4h4j"]
+[ext_resource type="Script" path="res://scenes/characters/player/get_gems.gd" id="6_6mgn8"]
+[ext_resource type="Script" path="res://components/hurtbox.gd" id="7_8rmjh"]
+[ext_resource type="Script" path="res://components/player_stats.gd" id="8_0a8rv"]
 
 [sub_resource type="Animation" id="Animation_nd5rt"]
 length = 0.001
@@ -48,7 +51,14 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_ad371"]
 radius = 6.08276
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ej4il"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8kflk"]
+radius = 5.0
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+z_index = 1
 collision_mask = 0
 script = ExtResource("1_e4ujy")
 
@@ -76,3 +86,21 @@ script = ExtResource("3_c2127")
 
 [node name="StartingSkill" parent="." instance=ExtResource("5_c4h4j")]
 collision_mask = 2
+
+[node name="GetGems" type="Area2D" parent="."]
+script = ExtResource("6_6mgn8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GetGems"]
+shape = SubResource("CircleShape2D_ej4il")
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("stats") groups=["player"]]
+script = ExtResource("7_8rmjh")
+stats = NodePath("../PlayerStats")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_8kflk")
+
+[node name="PlayerStats" type="Node" parent="."]
+script = ExtResource("8_0a8rv")
+character_name = "Player"
+health = 100.0

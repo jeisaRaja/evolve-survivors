@@ -20,7 +20,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_jnfys"]
 resource_name = "attack"
-length = 0.6
+length = 0.4
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
