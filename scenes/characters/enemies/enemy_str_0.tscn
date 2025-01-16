@@ -127,6 +127,7 @@ shape = SubResource("CapsuleShape2D_k2a3m")
 
 [node name="EnemyAI" type="Node" parent="."]
 script = ExtResource("5_0v8h8")
+movement_speed = 20
 
 [node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("stats")]
 visible = false
