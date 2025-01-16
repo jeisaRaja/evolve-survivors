@@ -1,6 +1,7 @@
 extends Node
 class_name EnemyAI
 
+@export var movement_speed: int
 @onready var enemy = self.owner as CharacterBody2D
 var player: Player
 

@@ -12,17 +12,20 @@ func _ready():
 
 
 func _on_timer_timeout():
+	if get_child_count() > 100:
+		return
 	time += 1
 	var enemy_spawns = spawns
 	for i in enemy_spawns:
 		if time >= i.time_start and time <= i.time_end:
-			if i.spawn_delay_counter < i.enemy_spawn_delay:
+			if i.spawn_delay_counter < i.get_enemy_spawn_delay():
 				i.spawn_delay_counter += 1
 			else:
 				i.spawn_delay_counter = 0
 				var new_enemy = i.enemy
 				var counter = 0
-				while counter < i.enemy_num:
+				var enemy_num = i.get_enemy_num()
+				while counter < enemy_num:
 					var enemy_spawn = new_enemy.instantiate()
 					enemy_spawn.global_position = get_random_position()
 					add_child(enemy_spawn)
