@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bt0fmdf4wcve4"]
+[gd_scene load_steps=19 format=3 uid="uid://bt0fmdf4wcve4"]
 
 [ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_e4ujy"]
 [ext_resource type="Texture2D" uid="uid://77a1sd6jj7yj" path="res://arts/player_starting.png" id="1_pca40"]
@@ -8,6 +8,10 @@
 [ext_resource type="Script" path="res://scenes/characters/player/get_gems.gd" id="6_6mgn8"]
 [ext_resource type="Script" path="res://components/hurtbox.gd" id="7_8rmjh"]
 [ext_resource type="Script" path="res://components/player_stats.gd" id="8_0a8rv"]
+[ext_resource type="Resource" uid="uid://b6jgjdkffffqc" path="res://scenes/characters/player/player_dna.tres" id="9_28uq6"]
+[ext_resource type="Texture2D" uid="uid://ct2iddw3snrle" path="res://arts/health_bar_bg.png" id="10_3g7oa"]
+[ext_resource type="Texture2D" uid="uid://csffx4y6q3t8u" path="res://arts/health_bar_fill.png" id="11_3fj73"]
+[ext_resource type="Script" path="res://scenes/ui/player_health.gd" id="12_h1pc5"]
 
 [sub_resource type="Animation" id="Animation_nd5rt"]
 length = 0.001
@@ -89,6 +93,7 @@ collision_mask = 2
 
 [node name="GetGems" type="Area2D" parent="."]
 script = ExtResource("6_6mgn8")
+player_dna_stats = ExtResource("9_28uq6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GetGems"]
 shape = SubResource("CircleShape2D_ej4il")
@@ -102,5 +107,16 @@ shape = SubResource("CircleShape2D_8kflk")
 
 [node name="PlayerStats" type="Node" parent="."]
 script = ExtResource("8_0a8rv")
+dna_stats = ExtResource("9_28uq6")
 character_name = "Player"
 health = 100.0
+
+[node name="PlayerHealth" type="TextureProgressBar" parent="."]
+offset_left = -16.0
+offset_top = 13.0
+offset_right = 16.0
+offset_bottom = 17.0
+value = 100.0
+texture_under = ExtResource("10_3g7oa")
+texture_progress = ExtResource("11_3fj73")
+script = ExtResource("12_h1pc5")

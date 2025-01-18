@@ -152,6 +152,7 @@ libraries = {
 
 [node name="DamagePlayer" type="Area2D" parent="."]
 script = ExtResource("8_3liye")
+damage = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamagePlayer"]
 position = Vector2(-7, -1)

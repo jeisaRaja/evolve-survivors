@@ -2,7 +2,7 @@ extends Area2D
 class_name HurtBox
 
 @onready var character = $".."
-@export var stats: Stats
+@export var stats: HealthStats
 var hurt_flash_animation: AnimationPlayer
 
 

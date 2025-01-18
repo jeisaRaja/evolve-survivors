@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnyq6lw56xash"]
+
+[ext_resource type="Texture2D" uid="uid://bngmoeu5vuxea" path="res://arts/str_gem.png" id="1_tbv4u"]
+[ext_resource type="Script" path="res://scenes/ui/dna_stats.gd" id="1_u118n"]
+[ext_resource type="Texture2D" uid="uid://20vdqfnltwtb" path="res://arts/agi_gem.png" id="2_6drxv"]
+[ext_resource type="Resource" uid="uid://b6jgjdkffffqc" path="res://scenes/characters/player/player_dna.tres" id="2_k8yh5"]
+[ext_resource type="Texture2D" uid="uid://b6cmgh08nsm8q" path="res://arts/int_gem.png" id="3_c64ya"]
+
+[node name="DnaStats" type="VBoxContainer"]
+offset_left = 11.0
+offset_top = 12.0
+offset_right = 79.0
+offset_bottom = 103.0
+theme_override_constants/separation = 4
+script = ExtResource("1_u118n")
+player_dna_stats = ExtResource("2_k8yh5")
+
+[node name="Str" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="Str"]
+layout_mode = 2
+texture = ExtResource("1_tbv4u")
+
+[node name="Label" type="Label" parent="Str"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "0"
+
+[node name="Agi" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="Agi"]
+layout_mode = 2
+texture = ExtResource("2_6drxv")
+
+[node name="Label" type="Label" parent="Agi"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "0"
+
+[node name="Int" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="Int"]
+layout_mode = 2
+texture = ExtResource("3_c64ya")
+
+[node name="Label" type="Label" parent="Int"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "0"

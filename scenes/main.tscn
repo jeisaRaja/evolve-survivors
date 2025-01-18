@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://d3onqu3ckpgjf"]
+[gd_scene load_steps=13 format=4 uid="uid://d3onqu3ckpgjf"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_03hcd"]
 [ext_resource type="Texture2D" uid="uid://bgggbqojkamhe" path="res://arts/tilemap.png" id="1_rwp2c"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://resources/spawn_info.gd" id="6_plau8"]
 [ext_resource type="Resource" uid="uid://de2c1k18alq6q" path="res://scenes/characters/enemies/enemy_int_0.tres" id="7_6i57p"]
 [ext_resource type="Resource" uid="uid://blduoudbeuo3g" path="res://scenes/characters/enemies/enemy_str_0.tres" id="8_jjl50"]
+[ext_resource type="PackedScene" uid="uid://dnyq6lw56xash" path="res://scenes/ui/dna_stats.tscn" id="10_scbj2"]
 [ext_resource type="PackedScene" uid="uid://j0xa4u35owfk" path="res://scenes/objects/dice.tscn" id="10_t13kk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5v1a8"]
@@ -161,10 +162,4 @@ position = Vector2(491, 304)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PlayerHealth" type="ProgressBar" parent="CanvasLayer"]
-unique_name_in_owner = true
-offset_left = 121.0
-offset_top = 134.0
-offset_right = 178.0
-offset_bottom = 155.0
-value = 100.0
+[node name="DnaStats" parent="CanvasLayer" instance=ExtResource("10_scbj2")]

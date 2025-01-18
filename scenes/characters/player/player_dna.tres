@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DnaStats" load_steps=2 format=3 uid="uid://b6jgjdkffffqc"]
+
+[ext_resource type="Script" path="res://resources/dna_stats.gd" id="1_n51su"]
+
+[resource]
+script = ExtResource("1_n51su")
+int_points = 0
+str_points = 0
+agi_points = 0
