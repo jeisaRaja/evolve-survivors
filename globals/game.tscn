@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://f8ifnwmohf4v"]
+
+[ext_resource type="Script" path="res://globals/game.gd" id="1_qfr7y"]
+[ext_resource type="Resource" uid="uid://b6jgjdkffffqc" path="res://scenes/characters/player/player_dna.tres" id="2_6orpr"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_qfr7y")
+player_dna_stats = ExtResource("2_6orpr")

@@ -12,8 +12,8 @@ func roll_dice():
 	animation.play("roll")
 	await get_tree().create_timer(2).timeout
 	animation.stop()
-	var numbers = [0, 2, 4, 6, 8, 10, 12]
-	var weights = [1, 2, 3, 4, 3, 2, 1]
+	var numbers = [0, 2, 4, 6, 8, 10]
+	var weights = [1, 2, 3, 4, 3, 2]
 	var number = weighted_random(numbers, weights)
 	sprite.frame = number
 

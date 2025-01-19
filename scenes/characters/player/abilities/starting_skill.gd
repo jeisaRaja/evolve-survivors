@@ -4,7 +4,7 @@ class_name StartingSkill
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
 @onready var hitbox = $CollisionShape2D as CollisionShape2D
 
-var time_treshold := 2.0
+var time_treshold := 1.2
 var time_since_last_attack := 0.0
 
 

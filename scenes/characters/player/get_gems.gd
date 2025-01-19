@@ -16,8 +16,6 @@ func _on_area_entered(area: Area2D):
 			Game.GemType.INT:
 				player_dna_stats.int_points += 1
 				area.queue_free()
-			Game.GemType.AGI:
-				player_dna_stats.agi_points += 1
-				area.queue_free()
 
+		player_dna_stats.total_points += 1
 		Event.player_dna_stats_updated.emit()

@@ -25,7 +25,6 @@ func _on_area_entered(area: Area2D):
 
 func _on_died():
 	if self.owner.is_in_group("player"):
-		print("player died")
 		return
 	if hurt_flash_animation.is_playing():
 		await hurt_flash_animation.animation_finished

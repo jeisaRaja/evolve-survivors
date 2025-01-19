@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://d3onqu3ckpgjf"]
+[gd_scene load_steps=15 format=4 uid="uid://d3onqu3ckpgjf"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_03hcd"]
 [ext_resource type="Texture2D" uid="uid://bgggbqojkamhe" path="res://arts/tilemap.png" id="1_rwp2c"]
@@ -10,6 +10,8 @@
 [ext_resource type="Resource" uid="uid://blduoudbeuo3g" path="res://scenes/characters/enemies/enemy_str_0.tres" id="8_jjl50"]
 [ext_resource type="PackedScene" uid="uid://dnyq6lw56xash" path="res://scenes/ui/dna_stats.tscn" id="10_scbj2"]
 [ext_resource type="PackedScene" uid="uid://j0xa4u35owfk" path="res://scenes/objects/dice.tscn" id="10_t13kk"]
+[ext_resource type="Texture2D" uid="uid://ct2iddw3snrle" path="res://arts/health_bar_bg.png" id="11_x742i"]
+[ext_resource type="Texture2D" uid="uid://bmmalep4umlne" path="res://arts/level_bar_fillt.png" id="12_s5sdo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5v1a8"]
 texture = ExtResource("1_rwp2c")
@@ -163,3 +165,24 @@ position = Vector2(491, 304)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DnaStats" parent="CanvasLayer" instance=ExtResource("10_scbj2")]
+
+[node name="LevelProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_right = 480.0
+offset_bottom = 7.0
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("11_x742i")
+texture_progress = ExtResource("12_s5sdo")
+
+[node name="Level" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 117.0
+offset_top = 37.0
+offset_right = 192.0
+offset_bottom = 54.0
+text = "Level 0"

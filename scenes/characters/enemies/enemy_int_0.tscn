@@ -54,9 +54,8 @@ _data = {
 "walk": SubResource("Animation_r18uy")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k2a3m"]
-radius = 9.0
-height = 26.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_kurad"]
+radius = 5.09902
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqoar"]
 radius = 8.0
@@ -100,13 +99,14 @@ _data = {
 "hurt_flash": SubResource("Animation_qipxh")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5ijbr"]
-radius = 7.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wbfiw"]
+radius = 3.0
+height = 24.0
 
 [node name="EnemyInt0" type="CharacterBody2D" groups=["enemy"]]
 z_index = 2
 collision_layer = 2
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("1_7wqpa")
 gem_res = ExtResource("2_4lulp")
 
@@ -122,15 +122,16 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(0, 3)
 rotation = -1.5708
-shape = SubResource("CapsuleShape2D_k2a3m")
+shape = SubResource("CircleShape2D_kurad")
 
 [node name="EnemyAI" type="Node" parent="."]
 script = ExtResource("2_bwksv")
-movement_speed = 20
+movement_speed = 15
 
 [node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("stats")]
+collision_layer = 2
 script = ExtResource("4_21ooj")
 stats = NodePath("../EnemyStats")
 
@@ -151,8 +152,8 @@ libraries = {
 }
 
 [node name="DamagePlayer" parent="." instance=ExtResource("8_l036i")]
-damage = 5.0
+damage = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamagePlayer"]
-position = Vector2(-7, -1)
-shape = SubResource("CircleShape2D_5ijbr")
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_wbfiw")
